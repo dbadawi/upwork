@@ -4,6 +4,10 @@
   <title>Upwork</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- include json locales from backend on each page -->
+  <%= javascript_tag do %>
+    window.I18n = <%= current_translations.to_json.html_safe %>
+  <% end %>
   <%= csrf_meta_tags %>
 </head>
 <body>
