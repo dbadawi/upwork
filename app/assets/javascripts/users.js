@@ -3,7 +3,7 @@ $(document).ready(function () {
   $("#new_user").validate({
     debug: false,
     rules: {
-      "user[username]": { remote:"/users/check_username" },
+      "user[username]": { remote:"check_username" },
     }
   });
   // Validation message with I18n locale

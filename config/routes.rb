@@ -1,18 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'pages/index'
+  # include locale parameter on each page
+  scope ":locale", :locale => /en|ru/ do
+    devise_for :users
+    get 'pages/index'
 
-  get 'pages/about'
+    get 'pages/about'
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+    # The priority is based upon order of creation: first created -> highest priority.
+    # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
+    # You can have the root of your site routed with "root"
+
+    get 'users/check_username' => 'users#check_username'
+
+    resources :users
+  end
+
   root 'pages#index'
-
-  get 'users/check_username' => 'users#check_username'
-
-  resources :users
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
